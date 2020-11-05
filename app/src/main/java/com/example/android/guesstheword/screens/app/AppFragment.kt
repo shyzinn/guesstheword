@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.guesstheword.screens.game
+package com.example.android.guesstheword.screens.app
 
 import android.os.Bundle
 import android.util.Log
@@ -26,16 +26,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.android.guesstheword.R
-import com.example.android.guesstheword.databinding.GameFragmentBinding
+import com.example.android.guesstheword.databinding.AppFragmentBinding
 
 /**
  * Fragment where the game is played
  */
-class GameFragment : Fragment() {
+class AppFragment : Fragment() {
 
-    private lateinit var binding: GameFragmentBinding
+    private lateinit var binding: AppFragmentBinding
 
-    private lateinit var viewModel: GameViewModel
+    private lateinit var viewModel: AppViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -43,14 +43,14 @@ class GameFragment : Fragment() {
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
                 inflater,
-                R.layout.game_fragment,
+                R.layout.app_fragment,
                 container,
                 false
         )
         Log.i("GameFragment", "Called ViewModelProvider.get")
 
         // Get the viewModel
-        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
         binding.correctButton.setOnClickListener { onCorrect() }
         binding.skipButton.setOnClickListener { onSkip() }
@@ -93,7 +93,7 @@ class GameFragment : Fragment() {
      */
     private fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
-        val action = GameFragmentDirections.actionGameToScore()
+        val action = AppFragmentDirections.actionGameToScore()
         action.score = viewModel.score
         NavHostFragment.findNavController(this).navigate(action)
     }

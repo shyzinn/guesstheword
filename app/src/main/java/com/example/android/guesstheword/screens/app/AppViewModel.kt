@@ -1,4 +1,4 @@
-package com.example.android.guesstheword.screens.game
+package com.example.android.guesstheword.screens.app
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 /**
  * ViewModel containing all the logic needed to run the game
  */
-class GameViewModel : ViewModel() {
+class AppViewModel : ViewModel() {
 
     // The current word
     var word = ""
